@@ -12,8 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Artista {
-
+public class Curatore {
+	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -26,21 +26,21 @@ public class Artista {
 	
 	private Date dataNascita;
 	
-	@Column(nullable = true)
-	private Date dataMorte;
-	
 	private String luogoNascita;
 	
-	@Column(nullable = true)
-	private String luogoMorte;
+	@Column(nullable = false, unique = true)
+	private String email;
 	
-	private String nazionalità;
+	private String telefono;
 	
-	@OneToMany(mappedBy = "autore")
-	private List<Opera> opere;
+	@Column(nullable = false, unique = true)
+	private Long matricola; 
 	
-	public Artista() {
-		this.opere = new ArrayList<Opera>();
+	@OneToMany(mappedBy = "curatore")
+	private List<Collezione> collezioniCurate;
+
+	public Curatore() {
+		this.collezioniCurate = new ArrayList<Collezione>();
 	}
 
 	public Long getId() {
@@ -75,14 +75,6 @@ public class Artista {
 		this.dataNascita = dataNascita;
 	}
 
-	public Date getDataMorte() {
-		return dataMorte;
-	}
-
-	public void setDataMorte(Date dataMorte) {
-		this.dataMorte = dataMorte;
-	}
-
 	public String getLuogoNascita() {
 		return luogoNascita;
 	}
@@ -91,28 +83,36 @@ public class Artista {
 		this.luogoNascita = luogoNascita;
 	}
 
-	public String getLuogoMorte() {
-		return luogoMorte;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setLuogoMorte(String luogoMorte) {
-		this.luogoMorte = luogoMorte;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public String getNazionalità() {
-		return nazionalità;
+	public String getTelefono() {
+		return telefono;
 	}
 
-	public void setNazionalità(String nazionalità) {
-		this.nazionalità = nazionalità;
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
-	public List<Opera> getOpere() {
-		return opere;
+	public Long getMatricola() {
+		return matricola;
 	}
 
-	public void setOpere(List<Opera> opere) {
-		this.opere = opere;
+	public void setMatricola(Long matricola) {
+		this.matricola = matricola;
+	}
+
+	public List<Collezione> getCollezioniCurate() {
+		return collezioniCurate;
+	}
+
+	public void setCollezioniCurate(List<Collezione> collezioniCurate) {
+		this.collezioniCurate = collezioniCurate;
 	}
 	
 	
