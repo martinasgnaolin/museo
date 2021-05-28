@@ -17,7 +17,7 @@ public class Opera {
 	@Column(nullable = false)
 	private String titolo;
 	
-	private String anno;
+	private Long anno;
 	
 	private String descrizione;
 	
@@ -47,11 +47,11 @@ public class Opera {
 		this.titolo = titolo;
 	}
 
-	public String getAnno() {
+	public Long getAnno() {
 		return anno;
 	}
 
-	public void setAnno(String anno) {
+	public void setAnno(Long anno) {
 		this.anno = anno;
 	}
 
