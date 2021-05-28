@@ -1,0 +1,53 @@
+body {
+    background: PaleGoldenrod;	
+}
+
+header {
+    background: no-repeat left/cover url(/images/museo.jpg);
+    display: flex;
+    height: 200px;
+    min-width: 120px;
+    align-items: center;
+    color: #fff;
+    text-shadow: #000 0 0 .2em;
+}
+
+header > h1 {
+    font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script', cursive,
+        fantasy;
+    margin: 2%;
+}
+
+#flex-container {
+	display: flex;
+	align-items: flex-start;
+	height: 100px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.flex-item { 
+	transform: skew(-20deg); 
+	height: 50px;
+	width: 500px;
+}
+
+#color1 {
+	background-color: LimeGreen;
+}
+
+#color2 {
+	background-color: Coral;
+}
+
+#color3 {
+	background-color: MediumPurple;
+}
+
+
+footer {
+    border-top-style: outset;
+    margin-top: 2em;
+	}
+	
+span.input {width: 30%;}

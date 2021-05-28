@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div id="flex-container">
+		<span id="color1" class="flex-item">Artisti</span>
+		<span id="color2" class="flex-item">Collezioni</span>
+		<span id="color3" class="flex-item">Informazioni</span>
+	</div>
+	
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
