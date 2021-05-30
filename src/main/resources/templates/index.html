@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})">
+		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
+	</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
@@ -16,8 +18,6 @@
 		<span id="img3" class="img-item"> </span>
 		<span id="img4" class="img-item"> </span>
 	</div>
-	
-	<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
