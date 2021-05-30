@@ -16,6 +16,6 @@ public interface CuratoreRepository extends CrudRepository<Curatore, Long> {
 	
 	public Curatore findByEmail(String email);
 	
-	public Curatore findByMatricola(String matricola);	
+	public Curatore findByMatricola(Long matricola);	
 	
 }
