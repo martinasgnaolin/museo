@@ -1,6 +1,7 @@
 package it.uniroma3.siw.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,20 @@ public class ArtistaService {
 	@Transactional
 	public List<Artista> cercaPerNomeECognome(String nome, String cognome){
 		return artistaRepo.findByNomeAndCognome(nome, cognome);		
+	}
+
+	@Transactional
+	public List<Artista> tutti() {
+		return (List<Artista>) artistaRepo.findAll();
+	}
+
+	@Transactional
+	public Artista artistaPerId(Long id) {
+		Optional<Artista> optional = artistaRepo.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 	
 	@Transactional
