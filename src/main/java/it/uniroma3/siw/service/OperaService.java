@@ -1,6 +1,7 @@
 package it.uniroma3.siw.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,6 +54,20 @@ public class OperaService {
 			return true;
 		else 
 			return false;
+	}
+	
+	@Transactional
+	public List<Opera> tutti() {
+		return (List<Opera>) operaRepo.findAll();
+	}
+	
+	@Transactional
+	public Opera operaPerId(Long id) {
+		Optional<Opera> optional = operaRepo.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 
 }

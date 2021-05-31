@@ -1,12 +1,12 @@
 package it.uniroma3.siw.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.model.Artista;
 import it.uniroma3.siw.model.Collezione;
 import it.uniroma3.siw.model.Curatore;
 import it.uniroma3.siw.repository.CollezioneRepository;
@@ -30,6 +30,20 @@ public class CollezioneService {
 	@Transactional
 	public List<Collezione> cercaPerCuratore(Curatore curatore){
 		return collezioneRepo.findByCuratore(curatore);
+	}
+
+	@Transactional
+	public List<Collezione> tutti() {
+		return (List<Collezione>) collezioneRepo.findAll();
+	}
+
+	@Transactional
+	public Collezione collezionePerId(Long id) {
+		Optional<Collezione> optional = collezioneRepo.findById(id);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 	
 	@Transactional
