@@ -1,4 +1,4 @@
-package it.uniroma3.siw.model;
+package it.uniroma3.siw.museo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

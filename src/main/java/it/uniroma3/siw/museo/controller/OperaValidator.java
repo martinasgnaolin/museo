@@ -1,4 +1,4 @@
-package it.uniroma3.siw.controller;
+package it.uniroma3.siw.museo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +8,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.model.Opera;
-import it.uniroma3.siw.service.OperaService;
+import it.uniroma3.siw.museo.model.Opera;
+import it.uniroma3.siw.museo.service.OperaService;
 
 @Component
 public class OperaValidator implements Validator{

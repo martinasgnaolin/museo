@@ -1,12 +1,12 @@
-package it.uniroma3.siw.repository;
+package it.uniroma3.siw.museo.repository;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import it.uniroma3.siw.model.Artista;
-import it.uniroma3.siw.model.Collezione;
-import it.uniroma3.siw.model.Opera;
+import it.uniroma3.siw.museo.model.Artista;
+import it.uniroma3.siw.museo.model.Collezione;
+import it.uniroma3.siw.museo.model.Opera;
 
 public interface OperaRepository extends CrudRepository<Opera, Long> {
 

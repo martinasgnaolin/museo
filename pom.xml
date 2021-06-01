@@ -13,6 +13,7 @@
 	<artifactId>museo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>museo</name>
+	<packaging>jar</packaging>
 	<description>Project museo</description>
 	<properties>
 		<java.version>1.8</java.version>

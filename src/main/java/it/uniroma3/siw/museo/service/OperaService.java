@@ -1,4 +1,4 @@
-package it.uniroma3.siw.service;
+package it.uniroma3.siw.museo.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.model.Artista;
-import it.uniroma3.siw.model.Collezione;
-import it.uniroma3.siw.model.Opera;
-import it.uniroma3.siw.repository.OperaRepository;
+import it.uniroma3.siw.museo.model.Artista;
+import it.uniroma3.siw.museo.model.Collezione;
+import it.uniroma3.siw.museo.model.Opera;
+import it.uniroma3.siw.museo.repository.OperaRepository;
 
 @Service
 public class OperaService {
