@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.service.OperaService;
@@ -37,8 +38,8 @@ public class OperaController {
 		return "opere.html";
 	}
 	
-	@RequestMapping(value = "/opere/{titolo}", method = RequestMethod.GET)
-	public String getOpereByTitolo(@PathVariable("titolo") String titolo, Model model) {
+	@RequestMapping(value = "/opere", method = RequestMethod.POST)
+	public String getOpereByTitolo(@RequestParam("titolo") String titolo, Model model) {
 		model.addAttribute("opere", this.operaService.cercaPerTitolo(titolo));
 		return "opere.html";
 	}

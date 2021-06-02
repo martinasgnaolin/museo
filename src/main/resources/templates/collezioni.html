@@ -7,23 +7,23 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a href="/">Homepage</a></span>
-		<span id="color2" class="flex-item"><a href="collezioni">Collezioni</a></span>
+		<span id="color1" class="flex-item"><a href="artisti">Artisti</a></span>
+		<span id="color2" class="flex-item"><a href="/">Homepage</a></span>
 		<span id="color3" class="flex-item"><a href="informazioni">Informazioni</a></span>
 	</div>
-	<form th:action="@{/artisti}" method="POST">
+	<form th:action="@{/opere}" method="POST">
 		<ul>
-        	<label>Cognome:</label> <input type='text' name='cognome' />
+        	<label>Cerca l'opera desiderata:</label> <input type='text' name='titolo' />
         	<input type="submit" value="cerca">
     	</ul>
 	</form>
 	<div>
-    	<h4>Lista degli artisti che espongono nel museo:</h4>
+    	<h4>Lista delle collezioni esposte nel museo:</h4>
 		<ul>
-			<li th:each="artista : ${artisti}">
-				<a href="artista.html" 
-				   th:href="@{'/artista' + '/' + ${artista.id}}" 
-				   th:text="|${artista.nome} ${artista.cognome}|">Nome Cognome</a>
+			<li th:each="collezione : ${collezioni}">
+				<a href="collezione.html" 
+				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
+				   th:text="|${collezione.nome}|">Nome</a>
 			</li>
 		</ul>
 	</div>

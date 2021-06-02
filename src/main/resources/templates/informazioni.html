@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=MuseoHomepage)">
+	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
@@ -9,16 +9,9 @@
 	<div id="flex-container">
 		<span id="color1" class="flex-item"><a href="artisti">Artisti</a></span>
 		<span id="color2" class="flex-item"><a href="collezioni">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a href="informazioni">Informazioni</a></span>
+		<span id="color3" class="flex-item"><a href="/">Homepage</a></span>
 	</div>
-	
-	<div id="img-container">
-		<span id="img1" class="img-item"> </span>
-		<span id="img2" class="img-item"> </span>
-		<span id="img3" class="img-item"> </span>
-		<span id="img4" class="img-item"> </span>
-	</div>
-
+	<h5>Qui si trovano le informazioni + prenotazioni per il museo</h5>
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
