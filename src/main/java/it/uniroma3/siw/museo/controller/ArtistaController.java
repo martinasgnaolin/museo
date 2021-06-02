@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.service.ArtistaService;
@@ -31,8 +32,8 @@ public class ArtistaController {
 		return "artisti.html";
 	}
 
-	@RequestMapping(value = "/artisti/{cognome}", method = RequestMethod.GET)
-	public String getArtistiByCognome(@PathVariable("cognome") String cognome, Model model) {
+	@RequestMapping(value = "/artisti", method = RequestMethod.POST)
+	public String getArtistiByCognome(@RequestParam("cognome") String cognome, Model model) {
 		model.addAttribute("artisti", this.artistaService.cercaPerCognome(cognome));
 		return "artisti.html";
 	}

@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
-		<span th:text="museo"></span>
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
-	<h1>Hello world</h1>
+	<div id="flex-container">
+		<span id="color1" class="flex-item"><a href="index">Homepage</a></span>
+		<span id="color2" class="flex-item">Collezioni</span>
+		<span id="color3" class="flex-item">Informazioni</span>
+	</div>
+	<form th:action="@{/artisti}" method="POST">
+		<ul>
+        	<label>Cognome:</label> <input type='text' name='cognome' />
+        	<input type="submit" value="cerca">
+    	</ul>
+	</form>
+	<div>
+    	<h4 th:text="Artisti">Lista degli artisti che espongono nel museo:</h4>
+		<ul>
+			<li th:each="artista : ${artisti}">
+				<a href="artista.html" 
+				   th:href="@{'/artista' + '/' + ${artista.id}}" 
+				   th:text="|${artista.nome} ${artista.cognome}|">Nome Cognome</a>
+			</li>
+		</ul>
+	</div>
 
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
