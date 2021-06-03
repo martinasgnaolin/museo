@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
+		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
+	</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div id="flex-container">
+		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+	</div>
+	
+	<div>
+    	<h4>Dettagli Opera:</h4>
+    	
+    	<div th:if="${opera}" th:object="${opera}">
+			<strong>Titolo: </strong><span th:text="*{titolo}">Titolo</span><br>
+			<strong>Descrizione: </strong><span th:text="*{descrizione}">Descrizione</span><br>
+			<strong>Autore: </strong>
+					<a href="artista"><span th:text="|*{autore.nome} *{autore.cognome}|">Nome Cognome</span></a><br>
+			<div th:if="*{anno}">
+				<strong>Anno: </strong><span th:text="*{anno}">Anno</span><br>
+			</div>
+    		<div th:unless="*{anno}">Anno di crezione non reperibile.</div>
+    		<strong>Collezione: </strong>
+					<a href="collezione"><span th:text="*{collezione.nome}">Nome</span></a><br>
+    	</div>
+	</div>
+
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

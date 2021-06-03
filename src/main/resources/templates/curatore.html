@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
+		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
+	</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div id="flex-container">
+		<span id="color1" class="flex-item"><a th:href="@{/}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+	</div>
+	<div>
+    	<h4>Dettagli Curatore:</h4>
+    	
+    	<div th:if="${curatore}" th:object="${curatore}">
+			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
+			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
+			<strong>E-mail: </strong><span th:text="*{email}">E-mail</span><br>
+			<strong>Matricola: </strong><span th:text="*{matricola}">Matricola</span><br>
+			<div th:if="*{telefono}">
+				<strong>Numero di telefono: </strong><span th:text="*{telefono}">Numero di telefono</span><br>
+			</div>
+    		<div th:unless="*{telefono}">Contattare via e-mail.</div>
+   		</div>
+    	<div th:unless="${curatore}">Curatore non esistente</div>
+    </div>
+    <div>
+    	<h4>Lista delle collezioni che cura:</h4>
+		<ul>
+			<li th:each="collezione : ${curatore.collezioni}">
+				<a href="collezione.html" 
+				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
+				   th:text="${collezione.nome}">Nome</a>
+			</li>
+		</ul>
+	</div>
+
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
