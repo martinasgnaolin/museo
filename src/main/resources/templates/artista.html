@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
+		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
+	</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div id="flex-container">
+		<span id="color1" class="flex-item"><a th:href="@{/}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+	</div>
+	<div>
+    	<h4>Dettagli artista:</h4>
+    	
+    	<div th:if="${artista}" th:object="${artista}">
+			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
+			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
+			<strong>Nazionalità: </strong><span th:text="*{nazionalita}">Nazionalita</span><br>
+			<strong>Luogo di nascita: </strong><span th:text="*{luogoNascita}">Luogo di nascita</span><br>
+			<strong>Data di nascita: </strong><span th:text="*{dataNascita}">Data di nascita</span><br>
+			<div th:if="*{dataMorte}">
+				<strong>Luogo di morte: </strong><span th:text="*{luogoMorte}">Luogo di morte</span><br>
+				<strong>Data di morte: </strong><span th:text="*{dataMorte}">Data di morte</span><br>
+			</div>
+    		<div th:unless="*{dataMorte}">Artista in vita</div>
+   		</div>
+    	<div th:unless="${artista}">Non esiste</div>
+    </div>
+    <div>
+    	<h4>Lista delle sue opere esposte in questo museo:</h4>
+		<ul>
+			<li th:each="opera : ${artista.opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="${opera.titolo}">Titolo</a>
+			</li>
+		</ul>
+	</div>
+
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

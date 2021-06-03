@@ -7,9 +7,9 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a href="artisti">Artisti</a></span>
-		<span id="color2" class="flex-item"><a href="collezioni">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a href="informazioni">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
 	
 	<div id="img-container">

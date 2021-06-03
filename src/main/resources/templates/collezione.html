@@ -8,7 +8,7 @@
 	
 	<div id="flex-container">
 		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
 	<form th:action="@{/opere}" method="POST">
@@ -18,12 +18,18 @@
     	</ul>
 	</form>
 	<div>
-    	<h4>Lista delle collezioni esposte nel museo:</h4>
+    	<h4>Dettagli collezione:</h4>
+    	<div th:if="${collezione}" th:object="${collezione}">
+			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
+			<strong>Descrizione: </strong><span th:text="*{descrizione}">Descrizione</span><br>
+			<strong>Curatore: </strong>
+					<a href="curatore"><span th:text="|*{curatore.nome} *{curatore.cognome}|">Nome Cognome</span></a><br>
+    	</div>
 		<ul>
-			<li th:each="collezione : ${collezioni}">
-				<a href="collezione.html" 
-				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
-				   th:text="|${collezione.nome}|">Nome</a>
+			<li th:each="opera : ${collezione.opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="|${opera.titolo}|">Nome</a>
 			</li>
 		</ul>
 	</div>

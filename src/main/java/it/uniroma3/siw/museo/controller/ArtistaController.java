@@ -34,6 +34,8 @@ public class ArtistaController {
 
 	@RequestMapping(value = "/artisti", method = RequestMethod.POST)
 	public String getArtistiByCognome(@RequestParam("cognome") String cognome, Model model) {
+		cognome = cognome.toLowerCase();
+		cognome = cognome.substring(0, 1).toUpperCase() + cognome.substring(1);
 		model.addAttribute("artisti", this.artistaService.cercaPerCognome(cognome));
 		return "artisti.html";
 	}

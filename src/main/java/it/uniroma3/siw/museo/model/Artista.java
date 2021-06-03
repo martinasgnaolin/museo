@@ -34,7 +34,7 @@ public class Artista {
 	@Column(nullable = true)
 	private String luogoMorte;
 	
-	private String nazionalità;
+	private String nazionalita;
 	
 	@OneToMany(mappedBy = "autore")
 	private List<Opera> opere;
@@ -99,12 +99,12 @@ public class Artista {
 		this.luogoMorte = luogoMorte;
 	}
 
-	public String getNazionalità() {
-		return nazionalità;
+	public String getNazionalita() {
+		return nazionalita;
 	}
 
-	public void setNazionalità(String nazionalità) {
-		this.nazionalità = nazionalità;
+	public void setNazionalita(String nazionalità) {
+		this.nazionalita = nazionalità;
 	}
 
 	public List<Opera> getOpere() {
