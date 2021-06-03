@@ -23,7 +23,9 @@
 			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
 			<strong>Descrizione: </strong><span th:text="*{descrizione}">Descrizione</span><br>
 			<strong>Curatore: </strong>
-					<a href="curatore"><span th:text="|*{curatore.nome} *{curatore.cognome}|">Nome Cognome</span></a><br>
+					<a 
+					   th:href="@{'/curatore' + '/' + *{curatore.id}}" 
+					   th:text="|*{curatore.nome} *{curatore.cognome}|">Nome Cognome</a><br>
     	</div>
 		<ul>
 			<li th:each="opera : ${collezione.opere}">

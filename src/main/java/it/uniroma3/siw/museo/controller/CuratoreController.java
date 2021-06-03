@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +31,13 @@ public class CuratoreController {
 		model.addAttribute("curatore", new Curatore());
 		return "curatoreForm.html";
 	}
+	
+	@RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
+	public String getCuratore(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
+		return "curatore.html";
+	}
+
 
 	@RequestMapping(value = "/curatore", method = RequestMethod.POST)
 	public String newCuratore(@ModelAttribute("curatore") Curatore curatore, 

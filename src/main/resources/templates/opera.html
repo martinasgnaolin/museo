@@ -19,13 +19,16 @@
 			<strong>Titolo: </strong><span th:text="*{titolo}">Titolo</span><br>
 			<strong>Descrizione: </strong><span th:text="*{descrizione}">Descrizione</span><br>
 			<strong>Autore: </strong>
-					<a href="artista"><span th:text="|*{autore.nome} *{autore.cognome}|">Nome Cognome</span></a><br>
+					<a 
+					th:href="@{'/artista' + '/' + *{autore.id}}"
+					th:text="|*{autore.nome} *{autore.cognome}|">Nome Cognome</a><br>
 			<div th:if="*{anno}">
 				<strong>Anno: </strong><span th:text="*{anno}">Anno</span><br>
 			</div>
     		<div th:unless="*{anno}">Anno di crezione non reperibile.</div>
     		<strong>Collezione: </strong>
-					<a href="collezione"><span th:text="*{collezione.nome}">Nome</span></a><br>
+					<a th:href="@{'/collezione' + '/' + *{collezione.id}}"
+					th:text="*{collezione.nome}">Nome</a><br>
     	</div>
 	</div>
 

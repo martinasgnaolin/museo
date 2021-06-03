@@ -29,7 +29,7 @@
     <div>
     	<h4>Lista delle collezioni che cura:</h4>
 		<ul>
-			<li th:each="collezione : ${curatore.collezioni}">
+			<li th:each="collezione : ${curatore.collezioniCurate}">
 				<a href="collezione.html" 
 				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
 				   th:text="${collezione.nome}">Nome</a>
