@@ -1,6 +1,10 @@
 package it.uniroma3.siw.museo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -29,8 +33,12 @@ public class AuthenticationController {
 	private CredentialsValidator credentialsValidator;
 	
 	@RequestMapping(value = "/autenticazione", method = RequestMethod.GET) 
-	public String loginOrRegister (Model model) {
+	public String loginOrRegister (Model model, HttpServletRequest request) {
+		if(request.getUserPrincipal()!=null) {
+			return "logout.html";
+		}
 		return "accediRegistrati.html";
+		
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
@@ -89,4 +97,13 @@ public class AuthenticationController {
         }
         return "registerUser";		//altrimenti rimandiamo alla form
     }
+    
+    public Boolean isUtenteLoggato() {
+    	  final Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	  if(auth == null || AnonymousAuthenticationToken.class.isAssignableFrom(getClass())) {
+    		  return false;
+    	  }
+    	  return auth.isAuthenticated();
+    	}
+
 }
