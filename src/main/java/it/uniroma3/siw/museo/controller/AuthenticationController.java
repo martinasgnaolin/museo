@@ -28,6 +28,11 @@ public class AuthenticationController {
 	@Autowired
 	private CredentialsValidator credentialsValidator;
 	
+	@RequestMapping(value = "/autenticazione", method = RequestMethod.GET) 
+	public String loginOrRegister (Model model) {
+		return "accediRegistrati.html";
+	}
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
 		model.addAttribute("user", new User());
