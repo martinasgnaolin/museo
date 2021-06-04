@@ -35,7 +35,11 @@ public class AuthenticationController {
 	@RequestMapping(value = "/autenticazione", method = RequestMethod.GET) 
 	public String loginOrRegister (Model model, HttpServletRequest request) {
 		if(request.getUserPrincipal()!=null) {
-			return "logout.html";
+			// User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			String username = request.getUserPrincipal().getName();
+			model.addAttribute("user", this.credentialsService.getCredentials(username).getUser());
+			return "areaPersonale.html";
+			//return "logout.html";
 		}
 		return "accediRegistrati.html";
 		
@@ -73,7 +77,7 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
             return "admin/home";
         }
-        return "home";
+        return "index";
     }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)

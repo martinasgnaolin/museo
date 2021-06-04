@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=MuseoHomepage)">
+	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
-	<a href="/autenticazione">Area Personale</a>
-
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
+		<span id="color1" class="flex-item"><a th:href="@{/}">Artisti</a></span>
 		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
-	
-	<div id="img-container">
-		<span id="img1" class="img-item"> </span>
-		<span id="img2" class="img-item"> </span>
-		<span id="img3" class="img-item"> </span>
-		<span id="img4" class="img-item"> </span>
-	</div>
+	<div>
+    	<h4>Dettagli Profilo:</h4>
+    	
+    	<div th:if="${user}" th:object="${user}">
+			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
+			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
+    	</div>
+    	
+    	<div>
+
+		<div>
+			<ul>
+				<li>
+					<a th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+		</div>
+    </div>
 
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
