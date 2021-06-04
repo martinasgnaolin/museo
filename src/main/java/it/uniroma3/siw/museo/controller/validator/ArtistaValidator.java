@@ -1,4 +1,4 @@
-package it.uniroma3.siw.museo.controller;
+package it.uniroma3.siw.museo.controller.validator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,29 +8,30 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import it.uniroma3.siw.museo.model.Opera;
-import it.uniroma3.siw.museo.service.OperaService;
+import it.uniroma3.siw.museo.model.Artista;
+import it.uniroma3.siw.museo.service.ArtistaService;
 
 @Component
-public class OperaValidator implements Validator{
+public class ArtistaValidator implements Validator{
 	
 	@Autowired
-	private OperaService operaService;
+	private ArtistaService artistaService;
 	
-    private static final Logger logger = LoggerFactory.getLogger(OperaValidator.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArtistaValidator.class);
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return Opera.class.equals(clazz);
+		return Artista.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cognome", "required");
 		
 		if(!errors.hasErrors()) {
 			logger.debug("I valori inseriti sono validi.");
-			if(this.operaService.alreadyExists((Opera)target)) {
+			if(this.artistaService.alreadyExists((Artista)target)) {
 				logger.debug("Artista già presente.");
 				errors.reject("duplicato");
 			}

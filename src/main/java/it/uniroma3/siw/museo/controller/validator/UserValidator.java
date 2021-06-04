@@ -1,4 +1,4 @@
-package it.uniroma3.siw.museo.controller;
+package it.uniroma3.siw.museo.controller.validator;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

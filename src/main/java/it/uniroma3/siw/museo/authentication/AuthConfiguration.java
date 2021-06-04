@@ -43,9 +43,11 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
                 //cioè stiamo dicendo che possiamo accedere a /, ovvero la pagina iniziale, a /index, /login, e anche le risorse SOTTO i path css e images
                 // log e register sono i pattern che associeremo alla form di login e accesso
-                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**",
+                							 "/artista/**", "/artisti/**", "/collezione/**", "/collezioni/**",
+                							 "/curatore/**", "/informazioni/**", "/opera/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
-                .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/login", "/register", "/artisti/**", "/opere/**").permitAll()
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)

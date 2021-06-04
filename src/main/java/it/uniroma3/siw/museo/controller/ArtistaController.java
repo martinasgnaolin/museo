@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.uniroma3.siw.museo.controller.validator.ArtistaValidator;
 import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.service.ArtistaService;
 

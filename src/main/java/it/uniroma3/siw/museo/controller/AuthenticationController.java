@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import it.uniroma3.siw.museo.controller.CredentialsValidator;
-import it.uniroma3.siw.museo.controller.UserValidator;
+import it.uniroma3.siw.museo.controller.validator.CredentialsValidator;
+import it.uniroma3.siw.museo.controller.validator.UserValidator;
 import it.uniroma3.siw.museo.model.Credentials;
 import it.uniroma3.siw.museo.model.User;
 import it.uniroma3.siw.museo.service.CredentialsService;

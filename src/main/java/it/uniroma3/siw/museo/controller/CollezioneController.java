@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import it.uniroma3.siw.museo.controller.validator.CollezioneValidator;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.service.CollezioneService;
 
