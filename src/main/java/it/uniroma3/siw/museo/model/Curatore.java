@@ -1,7 +1,7 @@
 package it.uniroma3.siw.museo.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -26,8 +26,8 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 	
-	@DateTimeFormat
-	private Date dataNascita;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataNascita;
 	
 	private String luogoNascita;
 	
@@ -70,11 +70,11 @@ public class Curatore {
 		this.cognome = cognome;
 	}
 
-	public Date getDataNascita() {
+	public LocalDate getDataNascita() {
 		return dataNascita;
 	}
 
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(LocalDate dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 

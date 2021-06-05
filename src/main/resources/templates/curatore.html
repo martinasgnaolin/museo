@@ -4,6 +4,7 @@
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
+	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
 	<div id="flex-container">
@@ -19,6 +20,7 @@
 			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
 			<strong>E-mail: </strong><span th:text="*{email}">E-mail</span><br>
 			<strong>Matricola: </strong><span th:text="*{matricola}">Matricola</span><br>
+			<strong>Data di nascita: </strong><span th:text="*{dataNascita}">Data</span><br>
 			<div th:if="*{telefono}">
 				<strong>Numero di telefono: </strong><span th:text="*{telefono}">Numero di telefono</span><br>
 			</div>

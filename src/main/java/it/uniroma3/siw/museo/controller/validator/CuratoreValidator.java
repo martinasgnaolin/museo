@@ -32,7 +32,7 @@ public class CuratoreValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "matricola", "required");
 
 		if (!errors.hasErrors()) {
-			logger.debug("I valori inseriti cono validi.");
+			logger.debug("I valori inseriti sono validi.");
 			if (this.curatoreService.alreadyExists((Curatore)target)) {
 				logger.debug("Curatore già presente.");
 				errors.reject("duplicato");
