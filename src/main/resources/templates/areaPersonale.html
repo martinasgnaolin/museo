@@ -11,17 +11,8 @@
 		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
-	<div>
-    	<h4>Dettagli Profilo:</h4>
-    	
-    	<div th:if="${user}" th:object="${user}">
-			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
-			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
-    	</div>
-    	
-    	<div>
+	<div th:replace="fragments/base.html :: DettagliPersona"></div>
 
-		<div>
 			<ul>
 				<li>
 					<a th:href="@{/logout}">Logout</a>

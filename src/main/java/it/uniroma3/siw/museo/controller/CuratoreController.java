@@ -46,7 +46,7 @@ public class CuratoreController {
 		this.curatoreValidator.validate(curatore, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.curatoreService.save(curatore);
-			return "index.html";
+			return "curatore.html";
 		}
 		return "curatoreForm.html";
 	}

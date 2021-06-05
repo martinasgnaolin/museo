@@ -8,8 +8,15 @@
 <body>
 	<header th:fragment="intestazione">
 		<h1>Nome del Museo</h1>
-	</header>	
-	
+	</header>
+	<div th:fragment="DettagliPersona">
+    	<h4>Dettagli Profilo:</h4>
+    	<div th:if="${user}" th:object="${user}">
+			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
+			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
+    	</div>
+   	</div>
+
 	<footer th:fragment="fondo">
 		<a th:href="@{/}">Go to the Homepage</a>
 	</footer>

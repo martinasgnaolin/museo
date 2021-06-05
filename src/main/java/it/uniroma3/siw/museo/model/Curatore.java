@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Curatore {
 	
@@ -24,6 +26,7 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 	
+	@DateTimeFormat
 	private Date dataNascita;
 	
 	private String luogoNascita;

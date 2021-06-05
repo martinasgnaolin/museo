@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Artista {
 
@@ -24,10 +26,13 @@ public class Artista {
 	@Column(nullable = false)
 	private String cognome;
 	
+	@DateTimeFormat
 	private Date dataNascita;
 	
+	@DateTimeFormat
 	@Column(nullable = true)
 	private Date dataMorte;
+	
 	
 	private String luogoNascita;
 	

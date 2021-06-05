@@ -35,11 +35,13 @@ public class AuthenticationController {
 	@RequestMapping(value = "/autenticazione", method = RequestMethod.GET) 
 	public String loginOrRegister (Model model, HttpServletRequest request) {
 		if(request.getUserPrincipal()!=null) {
-			// User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 			String username = request.getUserPrincipal().getName();
-			model.addAttribute("user", this.credentialsService.getCredentials(username).getUser());
-			return "areaPersonale.html";
-			//return "logout.html";
+			Credentials credentials = this.credentialsService.getCredentials(username);
+			model.addAttribute("user",  credentials.getUser());
+			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+				return "admin/home";
+			}
+			else return "areaPersonale.html";
 		}
 		return "accediRegistrati.html";
 		
@@ -64,7 +66,7 @@ public class AuthenticationController {
 	}
 	
     @RequestMapping(value = "/default", method = RequestMethod.GET)
-    public String defaultAfterLogin(Model model) {
+    public String defaultAfterLogin(Model model, HttpServletRequest request) {
  
     	//springSecurity ci mette a disposizione i dati dell'utente con l'ogg UserDetails, us, psw,ruolo
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -75,6 +77,8 @@ public class AuthenticationController {
     	//se queste credenziali hanno il ruolo di admin allora mandiamo ad una pagina che contiene il menu dell'amministratore
     	//altrimenti lo mandiamo alla pagina home
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+    		String username = request.getUserPrincipal().getName();
+			model.addAttribute("user", this.credentialsService.getCredentials(username).getUser());
             return "admin/home";
         }
         return "index";
