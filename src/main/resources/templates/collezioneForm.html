@@ -5,7 +5,7 @@
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4>Inserisci i dati dell'artista'</h4>
+		<h4>Inserisci i dati della collezione</h4>
 	</div>
 	<form th:action="@{/collezione}" method="POST" th:object="${collezione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
@@ -22,7 +22,13 @@
 				<span><input type="text" th:field="*{descrizione}" /></span>
 				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 			</div>
-			
+			<div>
+				<span>Curatore:</span>
+				<select th:field="*{curatore}">
+    				<option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="|${curatore.nome} ${curatore.cognome}|">
+    				</option>
+				</select>
+			</div>
 			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>

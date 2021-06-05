@@ -17,6 +17,9 @@ public class CollezioneService {
 	@Autowired
 	private CollezioneRepository collezioneRepo;
 	
+	@Autowired
+	private CuratoreService curatoreService;
+	
 	@Transactional
 	public Collezione save(Collezione collezione) {
 		return collezioneRepo.save(collezione);
@@ -53,6 +56,10 @@ public class CollezioneService {
 			return true;
 		else 
 			return false;
+	}
+
+	public List<Curatore> findAllCuratori() {
+		return this.curatoreService.tutti();
 	}
 
 }

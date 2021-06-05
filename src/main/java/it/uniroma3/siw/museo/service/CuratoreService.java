@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.museo.model.Artista;
+import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Curatore;
 import it.uniroma3.siw.museo.repository.CuratoreRepository;
 
@@ -62,6 +63,11 @@ public class CuratoreService {
 			return optional.get();
 		else 
 			return null;
+	}
+
+	@Transactional
+	public List<Curatore> tutti() {
+		return (List<Curatore>)curatoreRepo.findAll();
 	}
 
 

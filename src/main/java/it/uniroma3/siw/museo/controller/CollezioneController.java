@@ -42,6 +42,7 @@ public class CollezioneController {
 	public String addCollezione(Model model) {
 		logger.debug("addCollezione");
 		model.addAttribute("collezione", new Collezione());
+		model.addAttribute("curatori", this.collezioneService.findAllCuratori());
 		return "collezioneForm.html";
 	}
 
@@ -51,7 +52,7 @@ public class CollezioneController {
 		this.collezioneValidator.validate(collezione, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.collezioneService.save(collezione);
-			model.addAttribute("artisti", this.collezioneService.tutti());
+			model.addAttribute("collezioni", this.collezioneService.tutti());
 			return "collezioni.html";
 		}
 		return "collezioneForm.html";
