@@ -21,6 +21,8 @@ public class Opera {
 	
 	private String descrizione;
 	
+	private String imageUrl;
+	
 	@ManyToOne
 	private Artista autore;
 	
@@ -77,6 +79,14 @@ public class Opera {
 
 	public void setCollezione(Collezione collezione) {
 		this.collezione = collezione;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
 	}
 	
 	

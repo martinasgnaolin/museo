@@ -26,6 +26,10 @@
 				<span>Descrizione:</span>
 				<span><input type="text" th:field="*{descrizione}" /></span>
 				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+			</div>		
+			<div>
+				<span>Url immagine:</span>
+				<span><input type="text" th:field="*{imageUrl}" /></span>
 			</div>
 			<div>
 				<span>Autore:</span>
