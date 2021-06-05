@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
+	<head th:replace="fragments/base.html :: headerfiles(title=Opere)">
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
@@ -9,25 +9,22 @@
 	
 	<div id="flex-container">
 		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
 	<form th:action="@{/opere}" method="POST">
 		<ul>
-        	<label>Cerca l'opera desiderata:</label> <input type='text' name='titolo' />
+        	<label>Titolo:</label> <input type='text' name='titolo' />
         	<input type="submit" value="cerca">
     	</ul>
 	</form>
 	<div>
-		<a th:href="@{/opere}">Visualizza tutte le opere esposte nel museo!</a>
-	</div>
-	<div>
-    	<h4>Lista delle collezioni esposte nel museo:</h4>
+    	<h4>Lista delle opere esposte nel museo:</h4>
 		<ul>
-			<li th:each="collezione : ${collezioni}">
-				<a href="collezione.html" 
-				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
-				   th:text="|${collezione.nome}|">Nome</a>
+			<li th:each="opera : ${opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="${opera.titolo}">Titolo</a>
 			</li>
 		</ul>
 	</div>

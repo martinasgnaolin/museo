@@ -18,6 +18,12 @@ public class OperaService {
 	@Autowired
 	private OperaRepository operaRepo;
 	
+	@Autowired
+	private ArtistaService artistaService;
+
+	@Autowired
+	private CollezioneService collezioneService;
+	
 	@Transactional
 	public Opera save(Opera opera) {
 		return operaRepo.save(opera);
@@ -68,6 +74,14 @@ public class OperaService {
 			return optional.get();
 		else 
 			return null;
+	}
+
+	public List<Artista> findAllArtisti() {
+		return this.artistaService.tutti();
+	}
+
+	public List<Collezione> findAllCollezioni() {
+		return this.collezioneService.tutti();
 	}
 
 }

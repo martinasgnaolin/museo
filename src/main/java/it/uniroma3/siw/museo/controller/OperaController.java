@@ -49,6 +49,8 @@ public class OperaController {
 	public String addOpera(Model model) {
 		logger.debug("addOpera");
 		model.addAttribute("opera", new Opera());
+		model.addAttribute("artisti", this.operaService.findAllArtisti());
+		model.addAttribute("collezioni", this.operaService.findAllCollezioni());
 		return "operaForm.html";
 	}
 
@@ -58,7 +60,7 @@ public class OperaController {
 		this.operaValidator.validate(opera, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.operaService.save(opera);
-			model.addAttribute("artisti", this.operaService.tutti());
+			model.addAttribute("opere", this.operaService.tutti());
 			return "opere.html";
 		}
 		return "operaForm.html";
