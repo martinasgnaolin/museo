@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Prenotazione;
 import it.uniroma3.siw.museo.model.User;
 import it.uniroma3.siw.museo.model.Visita;
@@ -18,6 +18,9 @@ public class PrenotazioneService {
 
 	@Autowired
 	private PrenotazioneRepository prenotazioneRepo;
+	
+	@Autowired
+	private CollezioneService collezioneService;
 	
 	@Transactional
 	public Prenotazione save(Prenotazione prenotazione) {
@@ -55,6 +58,10 @@ public class PrenotazioneService {
 			return true;
 		else 
 			return false;
+	}
+	
+	public Collezione cercaCollezionePerId(Long id) {
+		return collezioneService.collezionePerId(id);
 	}
 
 

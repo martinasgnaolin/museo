@@ -36,6 +36,14 @@
 			</li>
 		</ul>
 	</div>
+	
+		<form th:action="@{/addPrenotazione}" method="POST">
+			<input type="hidden" name="collezioneId" th:value="${collezione.id}"/>
+			<ul>
+        		<input type="submit" value="prenota">
+    		</ul>
+		</form>
+    </div>
 
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>

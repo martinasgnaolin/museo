@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.museo.controller.validator.PrenotazioneValidator;
+import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Prenotazione;
 import it.uniroma3.siw.museo.service.PrenotazioneService;
 
@@ -32,6 +33,7 @@ public class PrenotazioneController {
 		model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
 		return "prenotazione.html";
 	}
+	
 
 	@RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
 	public String getPrenotazione(@PathVariable("id") Long id, Model model) {
@@ -39,15 +41,17 @@ public class PrenotazioneController {
 		return "prenotazione.html";
 	}
 	
-	@RequestMapping(value="/addPrenotazione", method = RequestMethod.GET)
-	public String addPrenotazione(Model model) {
+	@RequestMapping(value="/addPrenotazione", method = RequestMethod.POST)
+	public String addPrenotazione(Model model, @ModelAttribute("collezioneId") Long collezioneId) {
 		logger.debug("addPrenotazione");
 		model.addAttribute("prenotazione", new Prenotazione());
+		Collezione collezione= this.prenotazioneService.cercaCollezionePerId(collezioneId);
+		model.addAttribute("collezione",collezione);
 		return "prenotazioneForm.html";
 	}
 
 	@RequestMapping(value = "/prenotazione", method = RequestMethod.POST)
-	public String newCollezione(@ModelAttribute("prenotazione") Prenotazione prenotazione, 
+	public String newPrenotazione(@ModelAttribute("prenotazione") Prenotazione prenotazione, 
 			Model model, BindingResult bindingResult) {
 		this.prenotazioneValidator.validate(prenotazione, bindingResult);
 		if (!bindingResult.hasErrors()) {

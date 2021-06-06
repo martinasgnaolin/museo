@@ -5,20 +5,13 @@
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4>Inserisci i dati della prenotazione</h4>
+		<h4>hello world</h4>
 	</div>
 	<form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
-		<div>
-				<span>Collezione:</span>
-				<select th:field="*{collezione}">
-    				<option th:each="collezione : ${collezioni}" th:value="${collezione.id}" th:text="${collezione.nome} ">
-    				</option>
-				</select>
-			</div>			
-			
+				
 			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>
