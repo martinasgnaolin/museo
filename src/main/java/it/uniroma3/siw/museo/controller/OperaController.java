@@ -63,6 +63,8 @@ public class OperaController {
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere.html";
 		}
+		model.addAttribute("artisti", this.operaService.findAllArtisti());
+		model.addAttribute("collezioni", this.operaService.findAllCollezioni());
 		return "operaForm.html";
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.museo.model.Collezione;
+import it.uniroma3.siw.museo.model.Credentials;
 import it.uniroma3.siw.museo.model.Prenotazione;
 import it.uniroma3.siw.museo.model.User;
 import it.uniroma3.siw.museo.model.Visita;
@@ -21,6 +22,9 @@ public class PrenotazioneService {
 	
 	@Autowired
 	private CollezioneService collezioneService;
+	
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@Transactional
 	public Prenotazione save(Prenotazione prenotazione) {
@@ -62,6 +66,10 @@ public class PrenotazioneService {
 	
 	public Collezione cercaCollezionePerId(Long id) {
 		return collezioneService.collezionePerId(id);
+	}
+	
+	public Credentials cercaCredenzialiPerUsername(String username) {
+		return credentialsService.getCredentials(username);
 	}
 
 

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=Artisti)">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{title.areaPersonale})">
 		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
 	</head>
 <body>
@@ -12,6 +12,16 @@
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
 	<div th:replace="fragments/base.html :: DettagliPersona"></div>
+	
+			<div>
+    			<h4>Lista delle prenotazioni effettuate:</h4>
+				<ul>
+					<li th:each="prenotazione : ${prenotazioni}">
+						<span th:text="${prenotazione.visita.collezione.nome} + ': ' + |${prenotazione.visita.dataVisita} ${prenotazione.visita.ora}|">
+						Collezione: Data Ora</span>
+					</li>
+				</ul>
+			</div>
 
 			<ul>
 				<li>

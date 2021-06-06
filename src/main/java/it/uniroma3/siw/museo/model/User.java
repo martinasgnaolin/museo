@@ -30,7 +30,7 @@ public class User {
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -50,5 +50,12 @@ public class User {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
+	
+	public List<Prenotazione> getVisitePrenotate() {
+		return visitePrenotate;
+	}
 
+	public void setVisitePrenotate(List<Prenotazione> visitePrenotate) {
+		this.visitePrenotate = visitePrenotate;
+	}
 }

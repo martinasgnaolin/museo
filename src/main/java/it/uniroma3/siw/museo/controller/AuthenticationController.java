@@ -41,7 +41,9 @@ public class AuthenticationController {
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 				return "admin/home";
 			}
-			else return "areaPersonale.html";
+			else { 
+				model.addAttribute("prenotazioni", credentials.getUser().getVisitePrenotate());
+				return "areaPersonale.html";}
 		}
 		return "accediRegistrati.html";
 		

@@ -1,5 +1,7 @@
 package it.uniroma3.siw.museo.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.museo.controller.validator.PrenotazioneValidator;
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Prenotazione;
+import it.uniroma3.siw.museo.model.User;
 import it.uniroma3.siw.museo.service.PrenotazioneService;
 
 @Controller
@@ -46,19 +49,24 @@ public class PrenotazioneController {
 		logger.debug("addPrenotazione");
 		model.addAttribute("prenotazione", new Prenotazione());
 		Collezione collezione= this.prenotazioneService.cercaCollezionePerId(collezioneId);
-		model.addAttribute("collezione",collezione);
+		model.addAttribute("visite",collezione.getVisite());
 		return "prenotazioneForm.html";
 	}
 
 	@RequestMapping(value = "/prenotazione", method = RequestMethod.POST)
 	public String newPrenotazione(@ModelAttribute("prenotazione") Prenotazione prenotazione, 
-			Model model, BindingResult bindingResult) {
+			Model model, BindingResult bindingResult, HttpServletRequest request) {
+		String username = request.getUserPrincipal().getName();
+		User user = this.prenotazioneService.cercaCredenzialiPerUsername(username).getUser();
+		prenotazione.setUtente(user);
 		this.prenotazioneValidator.validate(prenotazione, bindingResult);
 		if (!bindingResult.hasErrors()) {
 			this.prenotazioneService.save(prenotazione);
 			model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
-			return "prenotazioni.html";
+			model.addAttribute("user", user);
+			return "areaPersonale.html";
 		}
+		model.addAttribute("visite", prenotazione.getVisita().getCollezione().getVisite());
 		return "prenotazioneForm.html";
 	}
 

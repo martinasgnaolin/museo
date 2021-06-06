@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{title.formPrenotazione})"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.prenotazioneForm})"> </head>
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4>hello world</h4>
+		<h4>Visite Disponibili:</h4>
 	</div>
 	<form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-				
-			<div>
-				<span><button type="submit">Invio</button></span>
+		</div>
+			<select th:field="*{visita}">
+    			<option th:each="visita : ${visite}" th:value="${visita.id}" th:text="|${visita.dataVisita} ${visita.ora}|">
+    			</option>
+			</select>		
+				<span><button type="submit">Conferma</button></span>
 			</div>
 		</div>
 	</form>

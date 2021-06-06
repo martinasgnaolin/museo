@@ -6,21 +6,23 @@
     <div>
     	<h4 th:text="#{header.menuAdmin}">Menu</h4>
     	<div th:replace="fragments/base.html :: DettagliPersona"></div>
-		<div>
-			<a th:href="@{/addArtista}">Aggiungi artista</a>
-   		</div>
-   		<div>
-			<a th:href="@{/addCollezione}">Inserisci dati collezione</a>
-   		</div>
-   		<div>
-			<a th:href="@{/addCuratore}">Inserisci curatore</a>
-   		</div>
-   		<div>
-			<a th:href="@{/addOpera}">Inserisci dati opera</a>
-   		</div>
-   		<div>
-			<a th:href="@{/addVisita}">Inserisci nuova visita</a>
-   		</div>
+    	<ul>
+			<li><div>
+				<a th:href="@{/addArtista}">Aggiungi artista</a>
+   			</div></li>
+   			<li><div>
+				<a th:href="@{/addCollezione}">Inserisci dati collezione</a>
+   			</div></li>
+   			<li><div>
+				<a th:href="@{/addCuratore}">Inserisci curatore</a>
+   			</div></li>
+   			<li><div>
+				<a th:href="@{/addOpera}">Inserisci dati opera</a>
+   			</div></li>
+   			<li><div>
+				<a th:href="@{/addVisita}">Inserisci nuova visita</a>
+   			</div></li>
+    	</ul>
    		<div>
 			<a th:href="@{/logout}">Logout</a>
    		</div>

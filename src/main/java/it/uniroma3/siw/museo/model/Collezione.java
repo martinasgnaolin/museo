@@ -77,6 +77,14 @@ public class Collezione {
 	public void setCuratore(Curatore curatore) {
 		this.curatore = curatore;
 	}
+	
+	public List<Visita> getVisite() {
+		return visite;
+	}
+
+	public void setVisite(List<Visita> visite) {
+		this.visite = visite;
+	}
 
 	
 }

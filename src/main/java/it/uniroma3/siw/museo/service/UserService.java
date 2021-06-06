@@ -27,8 +27,14 @@ public class UserService {
      * @return the retrieved User, or null if no User with the passed ID could be found in the DB
      */
     @Transactional
-    public User getUser(Long id) {
+    public User getUserById(Long id) {
         Optional<User> result = this.userRepository.findById(id);
+        return result.orElse(null);
+    }
+    
+    @Transactional
+    public User getUserByUsername(String username) {
+        Optional<User> result = this.userRepository.findByNome(username);
         return result.orElse(null);
     }
 
