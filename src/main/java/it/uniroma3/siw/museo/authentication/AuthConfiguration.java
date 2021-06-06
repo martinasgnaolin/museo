@@ -45,7 +45,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 // log e register sono i pattern che associeremo alla form di login e accesso
                 .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**",
                 							 "/artista/**", "/artisti/**", "/collezione/**", "/collezioni/**",
-                							 "/curatore/**", "/informazioni/**", "/opera/**", "/autenticazione",
+                							 "/curatore/**", "/informazioni/**", "/opera/**", "/autenticazione","/visita/**",
                 							 "/opere/**").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                 .antMatchers(HttpMethod.POST, "/login", "/register", "/artisti/**", "/opere/**").permitAll()

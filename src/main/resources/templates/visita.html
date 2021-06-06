@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=Visita)">
+		<meta name = "viewport" content="width = device-width, initial-scale = 1" />
+	</head>
+<body>
+	<div th:replace="fragments/base.html :: areaPersonale"></div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<div id="flex-container">
+		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+	</div>
+	<div>
+    	<h4>Dettagli Visite:</h4>
+    	
+    	<div th:if="${visita}" th:object="${visita}">
+			<strong>Collezione: </strong>
+				<a href="collezione.html" 
+				   th:href="@{'/collezione' + '/' + *{collezione.id}}" 
+				   th:text="*{collezione.nome}">Collezione</a><br>
+			<strong>Data della visita: </strong><span th:text="*{dataVisita}">Data</span><br>
+			<strong>Ora della visita: </strong><span th:text="*{ora}">Ora</span><br>
+    </div>
+    
+
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

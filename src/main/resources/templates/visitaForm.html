@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.formVisita})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: areaPersonale"></div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+		<h4>Inserisci i dati della visita</h4>
+	</div>
+	<form th:action="@{/visita}" method="POST" th:object="${visita}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+				<span>Collezione:</span>
+				<select th:field="*{collezione}">
+    				<option th:each="collezione : ${collezioni}" th:value="${collezione.id}" th:text="${collezione.nome} ">
+    				</option>
+				</select>
+			</div>
+			<div>	
+				<span>Data:</span>
+				<span><input type="date" th:field="*{dataVisita}" /></span>
+				<!span th:if="${#fields.hasErrors('dataVisita')}" th:errors="*{dataVisita}"><!/span>
+			</div>
+			<div>	
+				<span>Ora:</span>
+				<span><input type="time" th:field="*{ora}" /></span>
+			</div>
+			
+			
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	 <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

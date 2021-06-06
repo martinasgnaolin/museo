@@ -29,9 +29,13 @@ public class Collezione {
 	
 	@ManyToOne
 	private Curatore curatore;
+
+	@OneToMany(mappedBy="collezione")
+	private List<Visita> visite;
 	
 	public Collezione() {
 		this.opere = new ArrayList<Opera>();
+		this.visite = new ArrayList<Visita>();
 	}
 
 	public Long getId() {
