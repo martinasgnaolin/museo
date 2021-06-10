@@ -24,13 +24,13 @@
 			</div>
 
 			<div th:if="${recensioni}">
-				<li><strong>Ecco le tue recensioni: </strong></li>
-				<li th:each="recensione : ${utente.recensioni}">
+				<strong>Ecco le tue recensioni: </strong>
+				<div th:each="recensione : ${utente.recensioni}">
 					<ul>
 						<li><strong>Titolo: </strong><span th:text="${recensione.titolo}">Titolo</span></li>
 						<strong>Testo: </strong><span th:text="${recensione.testo}">Testo</span><br><br>
 					</ul>
-				</li>
+				</div>
 			</div>
 		<div>
 			<a th:href="@{/addRecensione}">Scrivi una recensione di questo museo!</a><br>
