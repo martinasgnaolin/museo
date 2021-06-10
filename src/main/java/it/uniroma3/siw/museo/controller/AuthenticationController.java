@@ -37,13 +37,20 @@ public class AuthenticationController {
 		if(request.getUserPrincipal()!=null) {
 			String username = request.getUserPrincipal().getName();
 			Credentials credentials = this.credentialsService.getCredentials(username);
-			model.addAttribute("user",  credentials.getUser());
+			model.addAttribute("utente",  credentials.getUser());
 			if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
 				return "admin/home";
 			}
 			else { 
-				model.addAttribute("prenotazioni", credentials.getUser().getVisitePrenotate());
-				return "areaPersonale.html";}
+				if(credentials.getUser().getVisitePrenotate().size() == 0) {
+					model.addAttribute("prenotazioni", null);
+				} else { model.addAttribute("prenotazioni", credentials.getUser().getVisitePrenotate()); }
+				
+				if(credentials.getUser().getRecensioni().size() > 0) {
+					model.addAttribute("recensioni", 1); }
+				
+				return "areaPersonale.html";
+				}
 		}
 		return "accediRegistrati.html";
 		
@@ -51,7 +58,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("utente", new User());
 		model.addAttribute("credentials", new Credentials());
 		return "registerUser";
 	}
@@ -87,7 +94,7 @@ public class AuthenticationController {
     }
 	
     @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
-    public String registerUser(@ModelAttribute("user") User user,
+    public String registerUser(@ModelAttribute("utente") User user,
                  BindingResult userBindingResult,
                  @ModelAttribute("credentials") Credentials credentials,
                  BindingResult credentialsBindingResult,

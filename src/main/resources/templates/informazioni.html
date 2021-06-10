@@ -12,7 +12,24 @@
 		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/}">Homepage</a></span>
 	</div>
-	<h5>Qui si trovano le informazioni + prenotazioni per il museo</h5>
+	<br><strong th:text="#{header.informazioni}"> Presentazione </strong><br>
+	<span th:text="#{content.informazioni}"> Descrizione </span><br>
+	
+	<div>
+		<li><strong>Ecco cosa dicono di noi: </strong></li>
+		<ul>
+		<div th:each="recensione : ${recensioni}">
+			<ul>
+				<li><strong>Titolo: </strong><span th:text="${recensione.titolo}">Titolo</span></li>
+				<strong>Testo: </strong><span th:text="${recensione.testo}">Testo</span><br>
+				<strong>Utente: </strong><span th:text="${recensione.utente.nome}">Utente</span><br><br>
+			</ul>
+		</div>
+		</ul>
+	</div>
+	
+	
+	
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

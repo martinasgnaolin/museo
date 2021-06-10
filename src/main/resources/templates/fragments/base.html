@@ -16,9 +16,9 @@
 	
 	<div th:fragment="DettagliPersona">
     	<h4>Dettagli Profilo:</h4>
-    	<div th:if="${user}" th:object="${user}">
+    	<div th:if="${utente}" th:object="${utente}">
 			<strong>Nome: </strong><span th:text="*{nome}">Nome</span><br>
-			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br>
+			<strong>Cognome: </strong><span th:text="*{cognome}">Cognome</span><br><br>
     	</div>
    	</div>
 

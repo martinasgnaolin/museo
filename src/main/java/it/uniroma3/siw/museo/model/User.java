@@ -3,6 +3,7 @@ package it.uniroma3.siw.museo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class User {
 	
 	public User() {
 		this.visitePrenotate=new ArrayList<>();
+		this.recensioni = new ArrayList<>();
 	}
 	
 	@Id
@@ -26,6 +28,9 @@ public class User {
 	
 	@OneToMany(mappedBy="utente")
 	private List<Prenotazione> visitePrenotate;
+	
+	@OneToMany(mappedBy = "utente")
+	private List<Recensione> recensioni;
 
 	public Long getId() {
 		return id;
@@ -58,4 +63,14 @@ public class User {
 	public void setVisitePrenotate(List<Prenotazione> visitePrenotate) {
 		this.visitePrenotate = visitePrenotate;
 	}
+
+	public List<Recensione> getRecensioni() {
+		return recensioni;
+	}
+
+	public void setRecensioni(List<Recensione> recensioni) {
+		this.recensioni = recensioni;
+	}
+
+	
 }

@@ -15,8 +15,6 @@ public interface VisitaRepository extends CrudRepository<Visita, Long>{
 
 	public List<Visita> findByCollezione(Collezione collezione);
 
-	//public List<Visita> findByPrenotazione(Prenotazione prenotazione);
-
 	public List<Visita> findByDataVisitaAndOraAndCollezione(LocalDate dataVisita,LocalTime ora, Collezione collezione);
 	
 }

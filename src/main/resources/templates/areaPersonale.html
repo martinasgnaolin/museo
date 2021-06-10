@@ -7,13 +7,13 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/}">Artisti</a></span>
+		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
 		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
 		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
 	<div th:replace="fragments/base.html :: DettagliPersona"></div>
 	
-			<div>
+			<div th:if="${prenotazioni}">
     			<h4>Lista delle prenotazioni effettuate:</h4>
 				<ul>
 					<li th:each="prenotazione : ${prenotazioni}">
@@ -23,11 +23,18 @@
 				</ul>
 			</div>
 
-			<ul>
-				<li>
-					<a th:href="@{/logout}">Logout</a>
+			<div th:if="${recensioni}">
+				<li><strong>Ecco le tue recensioni: </strong></li>
+				<li th:each="recensione : ${utente.recensioni}">
+					<ul>
+						<li><strong>Titolo: </strong><span th:text="${recensione.titolo}">Titolo</span></li>
+						<strong>Testo: </strong><span th:text="${recensione.testo}">Testo</span><br><br>
+					</ul>
 				</li>
-			</ul>
+			</div>
+		<div>
+			<a th:href="@{/addRecensione}">Scrivi una recensione di questo museo!</a><br>
+			<a th:href="@{/logout}">Logout</a>
 		</div>
     </div>
 
