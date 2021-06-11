@@ -68,4 +68,19 @@ public class OperaController {
 		return "operaForm.html";
 	}
 
+	@RequestMapping(value="/deleteOpera", method = RequestMethod.GET)
+	public String deleteOpera(Model model) {
+		logger.debug("deleteOpera");
+		model.addAttribute("opere", this.operaService.tutti());
+		return "operaDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteOpera", method = RequestMethod.POST)
+	public String delete(@RequestParam("operaId") Long operaId, 
+			Model model) {
+		Opera opera = this.operaService.operaPerId(operaId);
+		this.operaService.delete(opera);
+		return "admin/home";
+	}
+
 }

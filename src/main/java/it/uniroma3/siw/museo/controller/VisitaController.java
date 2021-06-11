@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.controller.validator.VisitaValidator;
 import it.uniroma3.siw.museo.model.Visita;
@@ -56,6 +57,21 @@ public class VisitaController {
 			return "visita.html";
 		}
 		return "visitaForm.html";
+	}
+
+	@RequestMapping(value="/deleteVisita", method = RequestMethod.GET)
+	public String deleteVisita(Model model) {
+		logger.debug("deleteVisita");
+		model.addAttribute("visita", this.visitaService.tutti());
+		return "visitaDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteVisita", method = RequestMethod.POST)
+	public String delete(@RequestParam("visitaId") Long visitaId, 
+			Model model) {
+		Visita visita = this.visitaService.visitaPerId(visitaId);
+		this.visitaService.delete(visita);
+		return "admin/home";
 	}
 
 

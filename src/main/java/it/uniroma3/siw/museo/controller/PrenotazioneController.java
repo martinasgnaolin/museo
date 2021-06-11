@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.controller.validator.PrenotazioneValidator;
 import it.uniroma3.siw.museo.model.Collezione;
@@ -68,6 +69,21 @@ public class PrenotazioneController {
 		}
 		model.addAttribute("visite", prenotazione.getVisita().getCollezione().getVisite());
 		return "prenotazioneForm.html";
+	}
+
+	@RequestMapping(value="/deletePrenotazione", method = RequestMethod.GET)
+	public String deletePrenotazione(Model model) {
+		logger.debug("deletePrenotazione");
+		model.addAttribute("prenotazione", this.prenotazioneService.tutti());
+		return "prenotazioneDelete.html";
+	}
+	
+	@RequestMapping(value = "/deletePrenotazione", method = RequestMethod.POST)
+	public String delete(@RequestParam("prenotazioneId") Long prenotazioneId, 
+			Model model) {
+		Prenotazione prenotazione = this.prenotazioneService.prenotazionePerId(prenotazioneId);
+		this.prenotazioneService.delete(prenotazione);
+		return "admin/home";
 	}
 
 }

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.visitaDelete})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: areaPersonale"></div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+		<h4>Selezione quale visita rimuovere</h4>
+	</div>
+	<form th:action="@{/deleteVisita}" method="POST" th:object="${visite}">	
+	
+			<div>
+				<span>Visite:</span>
+				<select name='visitaId'>
+    				<option th:each="visita : ${visite}" th:value="${visita.id}" th:text="|${visita.collezione.nome} ${visita.dataVisita} ${visita.ora}|">
+    				</option>
+				</select>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	 <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.controller.validator.CollezioneValidator;
 import it.uniroma3.siw.museo.model.Collezione;
@@ -57,6 +58,21 @@ public class CollezioneController {
 		}
 		model.addAttribute("curatori", this.collezioneService.findAllCuratori());
 		return "collezioneForm.html";
+	}
+	
+	@RequestMapping(value="/deleteCollezione", method = RequestMethod.GET)
+	public String deleteCollezione(Model model) {
+		logger.debug("deleteCollezione");
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		return "collezioneDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteCollezione", method = RequestMethod.POST)
+	public String delete(@RequestParam("collezioneId") Long collezioneId, 
+			Model model) {
+		Collezione collezione = this.collezioneService.collezionePerId(collezioneId);
+		this.collezioneService.delete(collezione);
+		return "admin/home";
 	}
 
 }

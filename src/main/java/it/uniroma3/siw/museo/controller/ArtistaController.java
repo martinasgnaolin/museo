@@ -66,4 +66,19 @@ public class ArtistaController {
 		return "artistaForm.html";
 	}
 
+	@RequestMapping(value="/deleteArtista", method = RequestMethod.GET)
+	public String deleteArtista(Model model) {
+		logger.debug("deleteArtista");
+		model.addAttribute("artisti", this.artistaService.tutti());
+		return "artistaDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteArtista", method = RequestMethod.POST)
+	public String delete(@RequestParam("artistaId") Long artistaId, 
+			Model model) {
+		Artista artista = this.artistaService.artistaPerId(artistaId);
+		this.artistaService.delete(artista);
+		return "admin/home";
+	}
+
 }

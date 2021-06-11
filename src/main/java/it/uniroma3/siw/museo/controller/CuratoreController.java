@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.controller.validator.CuratoreValidator;
 import it.uniroma3.siw.museo.model.Curatore;
@@ -60,10 +61,11 @@ public class CuratoreController {
 	}
 	
 	@RequestMapping(value = "/deleteCuratore", method = RequestMethod.POST)
-	public String delete(@ModelAttribute("curatore") Curatore curatore, 
+	public String delete(@RequestParam("curatoreId") Long curatoreId, 
 			Model model) {
-			this.curatoreService.delete(curatore);
-		return "home.html";
+		Curatore curatore = this.curatoreService.curatorePerId(curatoreId);
+		this.curatoreService.delete(curatore);
+		return "admin/home";
 	}
 	
 	

@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import it.uniroma3.siw.museo.controller.validator.RecensioneValidator;
 import it.uniroma3.siw.museo.model.Recensione;
@@ -55,6 +56,21 @@ public class RecensioneController {
 	public String informazioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.tutti());
 		return "informazioni.html";
+	}
+
+	@RequestMapping(value="/deleteRecensione", method = RequestMethod.GET)
+	public String deleteRecensione(Model model) {
+		logger.debug("deleteRecensione");
+		model.addAttribute("recensioni", this.recensioneService.tutti());
+		return "recensioneDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteRecensione", method = RequestMethod.POST)
+	public String delete(@RequestParam("recensioneId") Long recensioneId, 
+			Model model) {
+		Recensione recensione = this.recensioneService.recensionePerId(recensioneId);
+		this.recensioneService.delete(recensione);
+		return "admin/home";
 	}
 
 }

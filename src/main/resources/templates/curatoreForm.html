@@ -5,7 +5,7 @@
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4>Inserisci i dati del curatore'</h4>
+		<h4>Inserisci i dati del curatore</h4>
 	</div>
 	<form th:action="@{/curatore}" method="POST" th:object="${curatore}">
 		<div th:if="${#fields.hasGlobalErrors()}">

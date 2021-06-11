@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,7 +26,7 @@ public class Visita {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(mappedBy="visita")
+	@OneToMany(mappedBy="visita", cascade = {CascadeType.REMOVE})
 	private List<Prenotazione> prenotazioni;
 	
 	

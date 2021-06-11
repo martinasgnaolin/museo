@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,7 +40,7 @@ public class Curatore {
 	@Column(nullable = false, unique = true)
 	private Long matricola; 
 	
-	@OneToMany(mappedBy = "curatore")
+	@OneToMany(mappedBy = "curatore", cascade = {CascadeType.REMOVE})
 	private List<Collezione> collezioniCurate;
 
 	public Curatore() {

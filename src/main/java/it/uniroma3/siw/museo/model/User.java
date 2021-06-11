@@ -3,6 +3,7 @@ package it.uniroma3.siw.museo.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,10 +26,10 @@ public class User {
 	private String nome;
 	private String cognome;
 	
-	@OneToMany(mappedBy="utente")
+	@OneToMany(mappedBy="utente", cascade = {CascadeType.REMOVE})
 	private List<Prenotazione> visitePrenotate;
 	
-	@OneToMany(mappedBy = "utente")
+	@OneToMany(mappedBy = "utente", cascade = {CascadeType.REMOVE})
 	private List<Recensione> recensioni;
 
 	public Long getId() {
