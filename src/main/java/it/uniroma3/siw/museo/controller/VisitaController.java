@@ -62,7 +62,7 @@ public class VisitaController {
 	@RequestMapping(value="/deleteVisita", method = RequestMethod.GET)
 	public String deleteVisita(Model model) {
 		logger.debug("deleteVisita");
-		model.addAttribute("visita", this.visitaService.tutti());
+		model.addAttribute("visite", this.visitaService.tutti());
 		return "visitaDelete.html";
 	}
 	

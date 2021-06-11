@@ -74,7 +74,7 @@ public class PrenotazioneController {
 	@RequestMapping(value="/deletePrenotazione", method = RequestMethod.GET)
 	public String deletePrenotazione(Model model) {
 		logger.debug("deletePrenotazione");
-		model.addAttribute("prenotazione", this.prenotazioneService.tutti());
+		model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
 		return "prenotazioneDelete.html";
 	}
 	

@@ -8,19 +8,18 @@
 		<h4>Selezione quale prenotazione rimuovere</h4>
 	</div>
 	<form th:action="@{/deletePrenotazione}" method="POST" th:object="${prenotazioni}">	
-	
-			<div>
-				<span>Prenotazioni:</span>
-				<select name='prenotazioneId'>
-    				<option th:each="prenotazione : ${prenotazioni}" th:value="${prenotazione.id}" th:text="|${prenotazione.visita.collezione.nome} ${prenotazione.visita.dataVisita}|">
-    				</option>
-				</select>
-			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+		<div>
+			<span>Prenotazioni:</span>
+			<select name='prenotazioneId'>
+    			<option th:each="prenotazione : ${prenotazioni}" th:value="${prenotazione.id}" 
+    					th:text="|${prenotazione.visita.collezione.nome} ${prenotazione.visita.dataVisita} ${prenotazione.utente.nome} ${prenotazione.utente.cognome}|">
+    			</option>
+			</select>
+		</div>
+		<div>
+			<span><button type="submit">Invio</button></span>
 		</div>
 	</form>
-	 <footer th:replace="fragments/base.html :: fondo"></footer>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
