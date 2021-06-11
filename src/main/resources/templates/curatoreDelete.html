@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.curatoreDelete})"> </head>
+<body>
+	<div th:replace="fragments/base.html :: areaPersonale"></div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+		<h4>Selezione quale curatore rimuovere</h4>
+	</div>
+	<form th:action="@{/deleteCuratore}" method="POST" th:object="${curatori}">	
+	
+			<div>
+				<span>Curatore:</span>
+				<select name='curatoreId'>
+    				<option th:each="curatore : ${curatori}" th:value="${curatore.id}" th:text="|${curatore.nome} ${curatore.cognome}|">
+    				</option>
+				</select>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	 <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

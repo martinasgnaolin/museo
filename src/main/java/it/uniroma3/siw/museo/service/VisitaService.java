@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.museo.model.Collezione;
-import it.uniroma3.siw.museo.model.Prenotazione;
 import it.uniroma3.siw.museo.model.Visita;
 import it.uniroma3.siw.museo.repository.VisitaRepository;
 
@@ -24,6 +23,11 @@ public class VisitaService {
 	@Transactional
 	public Visita save(Visita visita) {
 		return visitaRepo.save(visita);
+	}
+	
+	@Transactional
+	public void delete(Visita visita) {
+		visitaRepo.delete(visita);
 	}
 	
 	@Transactional

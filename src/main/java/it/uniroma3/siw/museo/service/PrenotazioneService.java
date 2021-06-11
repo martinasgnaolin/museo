@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.museo.model.Collezione;
 import it.uniroma3.siw.museo.model.Credentials;
+
 import it.uniroma3.siw.museo.model.Prenotazione;
 import it.uniroma3.siw.museo.model.User;
 import it.uniroma3.siw.museo.model.Visita;
@@ -29,6 +30,10 @@ public class PrenotazioneService {
 	@Transactional
 	public Prenotazione save(Prenotazione prenotazione) {
 		return prenotazioneRepo.save(prenotazione);
+	}
+	@Transactional
+	public void delete(Prenotazione prenotazione) {
+		prenotazioneRepo.delete(prenotazione);
 	}
 	
 	@Transactional

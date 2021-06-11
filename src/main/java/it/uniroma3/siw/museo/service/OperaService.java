@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import it.uniroma3.siw.museo.model.Artista;
 import it.uniroma3.siw.museo.model.Collezione;
+
 import it.uniroma3.siw.museo.model.Opera;
 import it.uniroma3.siw.museo.repository.OperaRepository;
 
@@ -28,6 +29,12 @@ public class OperaService {
 	public Opera save(Opera opera) {
 		return operaRepo.save(opera);
 	}
+	
+	@Transactional
+	public void delete(Opera opera) {
+		operaRepo.delete(opera);
+	}
+		
 	
 	@Transactional
 	public List<Opera> cercaPerTitolo(String titolo){

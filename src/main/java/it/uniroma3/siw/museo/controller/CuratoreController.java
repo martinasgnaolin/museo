@@ -51,5 +51,21 @@ public class CuratoreController {
 		}
 		return "curatoreForm.html";
 	}
+	
+	@RequestMapping(value="/deleteCuratore", method = RequestMethod.GET)
+	public String deleteCuratore(Model model) {
+		logger.debug("deleteCuratore");
+		model.addAttribute("curatori", this.curatoreService.tutti());
+		return "curatoreDelete.html";
+	}
+	
+	@RequestMapping(value = "/deleteCuratore", method = RequestMethod.POST)
+	public String delete(@ModelAttribute("curatore") Curatore curatore, 
+			Model model) {
+			this.curatoreService.delete(curatore);
+		return "home.html";
+	}
+	
+	
 
 }

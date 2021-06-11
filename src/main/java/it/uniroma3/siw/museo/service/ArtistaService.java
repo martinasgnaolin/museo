@@ -22,6 +22,11 @@ public class ArtistaService {
 	}
 	
 	@Transactional
+	public void delete(Artista artista) {
+		 artistaRepo.delete(artista);
+	}
+	
+	@Transactional
 	public List<Artista> cercaPerCognome(String cognome) {
 		return artistaRepo.findByCognome(cognome);	
 	}
