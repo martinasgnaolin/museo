@@ -6,14 +6,14 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	
+	<strong>
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/artisti}">Artisti</a></span>
+		<span id="color2" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
-	
-	<div>
+	</strong>
+	<div class="column">
     	<h4>Dettagli Opera:</h4>
     	
     	<div th:if="${opera}" th:object="${opera}">
@@ -30,10 +30,10 @@
     		<strong>Collezione: </strong>
 					<a th:href="@{'/collezione' + '/' + *{collezione.id}}"
 					th:text="*{collezione.nome}">Nome</a><br>
-			<img th:src="*{imageUrl}">
     	</div>
 	</div>
-
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+	<div class="column">
+		<img style="margin-top: 5px; max-width: 100%;"th:src="${opera.imageUrl}">
+	</div>
 </body>
 </html>

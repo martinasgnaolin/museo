@@ -6,13 +6,14 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	
+	<strong>
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/}">Homepage</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
-	<div>
+	</strong>
+	<div class="column">
     	<h4>Dettagli artista:</h4>
     	
     	<div th:if="${artista}" th:object="${artista}">
@@ -29,7 +30,7 @@
    		</div>
     	<div th:unless="${artista}">Non esiste</div>
     </div>
-    <div>
+    <div class="column">
     	<h4>Lista delle sue opere esposte in questo museo:</h4>
 		<ul>
 			<li th:each="opera : ${artista.opere}">
@@ -39,7 +40,5 @@
 			</li>
 		</ul>
 	</div>
-
-    <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

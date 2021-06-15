@@ -5,16 +5,17 @@
 	</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	
+	<strong>
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/artisti}">Artisti</a></span>
+		<span id="color2" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
+	</strong>
+	<h2>Area Personale</h2>
 	<div th:replace="fragments/base.html :: DettagliPersona"></div>
-	
 			<div th:if="${prenotazioni}">
-    			<h4>Lista delle prenotazioni effettuate:</h4>
+    			<h4>Prenotazioni effettuate:</h4>
 				<ul>
 					<li th:each="prenotazione : ${prenotazioni}">
 						<span th:text="${prenotazione.visita.collezione.nome} + ': ' + |${prenotazione.visita.dataVisita} ${prenotazione.visita.ora}|">
@@ -31,9 +32,14 @@
 						<strong>Testo: </strong><span th:text="${recensione.testo}">Testo</span><br><br>
 					</ul>
 				</div>
-			</div>
+			</div>		
+		<div style="text-align: center;">
+		<form th:action="@{/addRecensione}" method="GET">
+        	<button class="button" 
+					type="submit"><span>Scrivi una recensione di questo museo</span></button>
+		</form>
+    	</div>
 		<div>
-			<a th:href="@{/addRecensione}">Scrivi una recensione di questo museo!</a><br>
 			<a th:href="@{/logout}">Logout</a>
 		</div>
     </div>

@@ -6,18 +6,13 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	
+	<strong>
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Artisti</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/artisti}">Artisti</a></span>
+		<span id="color2" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
-	<form th:action="@{/opere}" method="POST">
-		<ul>
-        	<label>Cerca l'opera desiderata:</label> <input type='text' name='titolo' />
-        	<input type="submit" value="cerca">
-    	</ul>
-	</form>
+	</strong>
 	<div>
     	<h4>Dettagli collezione:</h4>
     	<div th:if="${collezione}" th:object="${collezione}">
@@ -28,6 +23,7 @@
 					   th:href="@{'/curatore' + '/' + *{curatore.id}}" 
 					   th:text="|*{curatore.nome} *{curatore.cognome}|">Nome Cognome</a><br>
     	</div>
+    	<h4>Opere esposte nella collezione:</h4>
 		<ul>
 			<li th:each="opera : ${collezione.opere}">
 				<a href="opera.html" 
@@ -36,12 +32,11 @@
 			</li>
 		</ul>
 	</div>
-	
+	<div style="text-align: center;">
 		<form th:action="@{/addPrenotazione}" method="POST">
 			<input type="hidden" name="collezioneId" th:value="${collezione.id}"/>
-			<ul>
-        		<input type="submit" value="prenota">
-    		</ul>
+        	<button class="button" 
+					type="submit"><span>Prenota una visita per questa collezione!</span></button>
 		</form>
     </div>
 

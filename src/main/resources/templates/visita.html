@@ -6,12 +6,13 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	
+	<strong>
 	<div id="flex-container">
-		<span id="color1" class="flex-item"><a th:href="@{/artisti}">Homepage</a></span>
-		<span id="color2" class="flex-item"><a th:href="@{/collezioni}">Collezioni</a></span>
-		<span id="color3" class="flex-item"><a th:href="@{/informazioni}">Informazioni</a></span>
+		<span id="color1" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/artisti}">Homepage</a></span>
+		<span id="color2" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/collezioni}">Collezioni</a></span>
+		<span id="color3" class="flex-item"><a style="color:PaleGoldenrod" th:href="@{/informazioni}">Informazioni</a></span>
 	</div>
+	</strong>
 	<div>
     	<h4>Dettagli Visite:</h4>
     	

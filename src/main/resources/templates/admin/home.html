@@ -4,9 +4,10 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
     <div>
-    	<h4 th:text="#{header.menuAdmin}">Menu</h4>
+    	<h2 th:text="#{header.menuAdmin}">Menu</h2>
     	<div th:replace="fragments/base.html :: DettagliPersona"></div>
-    	<ul>
+    		<div class="column"><strong>Operazioni di aggiunta:</strong>
+    		<ul>
 			<li><div>
 				<a th:href="@{/addArtista}">Aggiungi artista</a>
    			</div></li>
@@ -22,6 +23,9 @@
    			<li><div>
 				<a th:href="@{/addVisita}">Inserisci nuova visita</a>
    			</div></li>
+    		</ul></div>
+    		<div class="column"><strong>Operazioni di rimozione:</strong>
+    		<ul>
    			<li><div>
 				<a th:href="@{/deleteArtista}">Rimuovi un artista</a>
    			</div></li>
@@ -43,9 +47,9 @@
    			<li><div>
 				<a th:href="@{/deleteRecensione}">Rimuovi una recensione</a>
    			</div></li>
-    	</ul>
+			</ul></div>
    		<div>
-			<a th:href="@{/logout}">Logout</a>
+		<br><br><a th:href="@{/logout}">Logout</a>
    		</div>
     </div>
     <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>

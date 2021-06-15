@@ -36,7 +36,6 @@ public class ArtistaValidator implements Validator{
 				errors.reject("duplicato");
 			}
 		}
-		
 	}
 
 }

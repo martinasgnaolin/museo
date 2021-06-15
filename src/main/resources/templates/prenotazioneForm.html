@@ -4,6 +4,7 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div style="text-align: center;">
 	<div>
 		<h4>Visite Disponibili:</h4>
 	</div>
@@ -11,14 +12,15 @@
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
+		<div>
 			<select th:field="*{visita}">
     			<option th:each="visita : ${visite}" th:value="${visita.id}" th:text="|${visita.dataVisita} ${visita.ora}|">
     			</option>
-			</select>		
-				<span><button type="submit">Conferma</button></span>
-			</div>
+			</select><br><br>
+				<button class="button" type="submit"><span>Prenota</span></button>
 		</div>
 	</form>
+	</div>
 	 <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

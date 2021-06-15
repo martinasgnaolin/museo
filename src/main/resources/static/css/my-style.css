@@ -1,6 +1,7 @@
 body {
     background: PaleGoldenrod;	
     font-family: 'Tahoma';
+    font-size: larger;
 }
 
 header {
@@ -14,6 +15,7 @@ header {
 }
 
 header > h1 {
+	text-align: left;
     font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Tahoma', cursive,
         fantasy;
     margin: 2%;
@@ -86,3 +88,32 @@ footer {
 	}
 	
 span.input {width: 30%;}
+
+.button {
+  background-color: coral;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: large;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+select {
+	 font-size: large;
+	 width: 20%; 
+	 height: 20%;
+}

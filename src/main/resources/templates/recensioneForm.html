@@ -4,8 +4,9 @@
 <body>
 	<div th:replace="fragments/base.html :: areaPersonale"></div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div  style="text-align: center;">
 	<div>
-		<h4>Inserisci recensione:</h4>
+		<h4>Scrivi recensione:</h4>
 	</div>
 	<form th:action="@{/recensione}" method="POST" th:object="${recensione}">
 		<div th:if="${#fields.hasGlobalErrors()}">
@@ -13,20 +14,21 @@
 		</div>		
 		<div>
 			<div>
-				<span>Titolo:</span>
+				<span>Titolo:</span><br>
 				<span><input type="text" th:field="*{titolo}" /></span>
 				<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
-			</div>		
+			</div><br>	
 			<div>
-				<span>Testo:</span>
+				<span>Testo:</span><br>
 				<span><textarea name="testo" rows="5" cols="40" th:field="*{testo}" /></span>
 				<span th:if="${#fields.hasErrors('testo')}" th:errors="*{testo}"></span>
-			</div>
+			</div><br>
 			<div>
-				<span><button type="submit">Pubblica Recensione</button></span>
+				<button class="button" type="submit"><span>Pubblica Recensione</span></button>
 			</div>
 		</div>
 	</form>
+	</div>
 	 <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
