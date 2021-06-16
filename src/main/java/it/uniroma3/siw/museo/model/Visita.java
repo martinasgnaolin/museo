@@ -17,27 +17,27 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Visita {
-	
-	public Visita() {
-		this.prenotazioni=new ArrayList<>();
-	}
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@OneToMany(mappedBy="visita", cascade = {CascadeType.REMOVE})
 	private List<Prenotazione> prenotazioni;
-	
-	
+
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataVisita;
-	
+
 	@DateTimeFormat(pattern="HH:mm")
 	private LocalTime ora;
-	
+
 	@ManyToOne
 	private Collezione collezione;
+
+	public Visita() {
+		this.prenotazioni=new ArrayList<>();
+	}
 
 	public Long getId() {
 		return id;
@@ -74,13 +74,13 @@ public class Visita {
 	public LocalTime getOra() {
 		return ora;
 	}
-	
+
 	public void setOra(LocalTime ora) {
 		this.ora=ora;
 	}
-	
-	
 
-	
-	
+
+
+
+
 }

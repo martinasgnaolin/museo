@@ -8,20 +8,18 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Prenotazione {
-	
-
-	public Prenotazione() {
-	}
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@ManyToOne
 	private Visita visita;
-	
+
 	@ManyToOne
 	private User utente;
+
+	public Prenotazione() {}
 
 	public Long getId() {
 		return id;
@@ -47,7 +45,7 @@ public class Prenotazione {
 		this.utente = utente;
 	}
 
-	
-	
-	
+
+
+
 }

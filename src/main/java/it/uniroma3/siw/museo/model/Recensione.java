@@ -10,23 +10,21 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Recensione {
-	
-	public Recensione() {
-		
-	}
-	
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String titolo;
-	
+
 	@Column(nullable = false, length = 500)
 	private String testo;
-	
+
 	@ManyToOne
 	private User utente;
+
+	public Recensione() {}
 
 	public Long getId() {
 		return id;

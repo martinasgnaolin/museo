@@ -14,23 +14,23 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users") // cambiamo nome perchè in postgres user e' una parola riservata
 public class User {
-	
-	public User() {
-		this.visitePrenotate=new ArrayList<>();
-		this.recensioni = new ArrayList<>();
-	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String nome;
 	private String cognome;
-	
+
 	@OneToMany(mappedBy="utente", cascade = {CascadeType.REMOVE})
 	private List<Prenotazione> visitePrenotate;
-	
+
 	@OneToMany(mappedBy = "utente", cascade = {CascadeType.REMOVE})
 	private List<Recensione> recensioni;
+
+	public User() {
+		this.visitePrenotate = new ArrayList<>();
+		this.recensioni = new ArrayList<>();
+	}
 
 	public Long getId() {
 		return id;
@@ -39,23 +39,23 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
-	
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public String getCognome() {
 		return cognome;
 	}
-	
+
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	
+
 	public List<Prenotazione> getVisitePrenotate() {
 		return visitePrenotate;
 	}
@@ -72,5 +72,5 @@ public class User {
 		this.recensioni = recensioni;
 	}
 
-	
+
 }

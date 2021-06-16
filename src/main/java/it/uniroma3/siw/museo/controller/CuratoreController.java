@@ -33,7 +33,7 @@ public class CuratoreController {
 		model.addAttribute("curatore", new Curatore());
 		return "curatoreForm.html";
 	}
-	
+
 	@RequestMapping(value = "/curatore/{id}", method = RequestMethod.GET)
 	public String getCuratore(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("curatore", this.curatoreService.curatorePerId(id));
@@ -52,14 +52,14 @@ public class CuratoreController {
 		}
 		return "curatoreForm.html";
 	}
-	
+
 	@RequestMapping(value="/deleteCuratore", method = RequestMethod.GET)
 	public String deleteCuratore(Model model) {
 		logger.debug("deleteCuratore");
 		model.addAttribute("curatori", this.curatoreService.tutti());
 		return "curatoreDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deleteCuratore", method = RequestMethod.POST)
 	public String delete(@RequestParam("curatoreId") Long curatoreId, 
 			Model model) {
@@ -67,7 +67,5 @@ public class CuratoreController {
 		this.curatoreService.delete(curatore);
 		return "admin/home";
 	}
-	
-	
 
 }

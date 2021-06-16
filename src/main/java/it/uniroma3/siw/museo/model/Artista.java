@@ -20,31 +20,30 @@ public class Artista {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String cognome;
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascita;
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@Column(nullable = true)
 	private LocalDate dataMorte;
-	
-	
+
 	private String luogoNascita;
-	
+
 	@Column(nullable = true)
 	private String luogoMorte;
-	
+
 	private String nazionalita;
-	
+
 	@OneToMany(mappedBy = "autore", cascade = {CascadeType.REMOVE})
 	private List<Opera> opere;
-	
+
 	public Artista() {
 		this.opere = new ArrayList<Opera>();
 	}
@@ -120,6 +119,6 @@ public class Artista {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
-	
-	
+
+
 }

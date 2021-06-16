@@ -18,7 +18,7 @@ import it.uniroma3.siw.museo.service.VisitaService;
 
 @Controller
 public class VisitaController {
-	
+
 	@Autowired
 	private VisitaService visitaService;
 
@@ -38,7 +38,7 @@ public class VisitaController {
 		model.addAttribute("visita", this.visitaService.visitaPerId(id));
 		return "visite.html";
 	}
-	
+
 	@RequestMapping(value="/addVisita", method = RequestMethod.GET)
 	public String addVisita(Model model) {
 		logger.debug("addVisita");
@@ -65,7 +65,7 @@ public class VisitaController {
 		model.addAttribute("visite", this.visitaService.tutti());
 		return "visitaDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deleteVisita", method = RequestMethod.POST)
 	public String delete(@RequestParam("visitaId") Long visitaId, 
 			Model model) {

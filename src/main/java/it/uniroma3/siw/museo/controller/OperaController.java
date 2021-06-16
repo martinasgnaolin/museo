@@ -32,13 +32,13 @@ public class OperaController {
 		model.addAttribute("opera", this.operaService.operaPerId(id));
 		return "opera.html";
 	}
-	
+
 	@RequestMapping(value = "/opere", method = RequestMethod.GET)
 	public String getOpere(Model model) {
 		model.addAttribute("opere", this.operaService.tutti());
 		return "opere.html";
 	}
-	
+
 	@RequestMapping(value = "/opere", method = RequestMethod.POST)
 	public String getOpereByTitolo(@RequestParam("titolo") String titolo, Model model) {
 		model.addAttribute("opere", this.operaService.cercaPerTitolo(titolo));
@@ -74,7 +74,7 @@ public class OperaController {
 		model.addAttribute("opere", this.operaService.tutti());
 		return "operaDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deleteOpera", method = RequestMethod.POST)
 	public String delete(@RequestParam("operaId") Long operaId, 
 			Model model) {

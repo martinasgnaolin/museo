@@ -20,22 +20,22 @@ import it.uniroma3.siw.museo.service.RecensioneService;
 
 @Controller
 public class RecensioneController {
-	
+
 	@Autowired
 	private RecensioneValidator recensioneValidator;
-	
+
 	@Autowired
 	private RecensioneService recensioneService;
-	
+
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
-	
+
 	@RequestMapping(value="/addRecensione", method = RequestMethod.GET)
 	public String addRecensione(Model model) {
 		logger.debug("addRecensione");
 		model.addAttribute("recensione", new Recensione());
 		return "recensioneForm.html";
 	}
-	
+
 	@RequestMapping(value = "/recensione", method = RequestMethod.POST)
 	public String newRecensione(@ModelAttribute("recensione") Recensione recensione, 
 			Model model, BindingResult bindingResult, HttpServletRequest request) {
@@ -51,7 +51,7 @@ public class RecensioneController {
 		}
 		return "recensioneForm.html";
 	}
-	
+
 	@RequestMapping(value = {"/informazioni"}, method = RequestMethod.GET)
 	public String informazioni(Model model) {
 		model.addAttribute("recensioni", this.recensioneService.tutti());
@@ -64,7 +64,7 @@ public class RecensioneController {
 		model.addAttribute("recensioni", this.recensioneService.tutti());
 		return "recensioneDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deleteRecensione", method = RequestMethod.POST)
 	public String delete(@RequestParam("recensioneId") Long recensioneId, 
 			Model model) {

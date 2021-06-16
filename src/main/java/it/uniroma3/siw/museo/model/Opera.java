@@ -9,29 +9,27 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Opera {
-	
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String titolo;
-	
+
 	private Long anno;
-	
+
 	private String descrizione;
-	
+
 	private String imageUrl;
-	
+
 	@ManyToOne
 	private Artista autore;
-	
+
 	@ManyToOne
 	private Collezione collezione;
 
-	public Opera() {
-		
-	}
+	public Opera() {}
 
 	public Long getId() {
 		return id;
@@ -88,6 +86,6 @@ public class Opera {
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-	
-	
+
+
 }

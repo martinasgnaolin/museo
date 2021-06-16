@@ -38,7 +38,7 @@ public class CollezioneController {
 		model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
 		return "collezione.html";
 	}
-	
+
 	@RequestMapping(value="/addCollezione", method = RequestMethod.GET)
 	public String addCollezione(Model model) {
 		logger.debug("addCollezione");
@@ -59,14 +59,14 @@ public class CollezioneController {
 		model.addAttribute("curatori", this.collezioneService.findAllCuratori());
 		return "collezioneForm.html";
 	}
-	
+
 	@RequestMapping(value="/deleteCollezione", method = RequestMethod.GET)
 	public String deleteCollezione(Model model) {
 		logger.debug("deleteCollezione");
 		model.addAttribute("collezioni", this.collezioneService.tutti());
 		return "collezioneDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deleteCollezione", method = RequestMethod.POST)
 	public String delete(@RequestParam("collezioneId") Long collezioneId, 
 			Model model) {

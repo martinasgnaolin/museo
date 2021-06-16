@@ -16,30 +16,30 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Curatore {
-	
+
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@Column(nullable = false)
 	private String cognome;
-	
+
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataNascita;
-	
+
 	private String luogoNascita;
-	
+
 	@Column(nullable = false, unique = true)
 	private String email;
-	
+
 	private String telefono;
-	
+
 	@Column(nullable = false, unique = true)
 	private Long matricola; 
-	
+
 	@OneToMany(mappedBy = "curatore", cascade = {CascadeType.REMOVE})
 	private List<Collezione> collezioniCurate;
 
@@ -118,6 +118,6 @@ public class Curatore {
 	public void setCollezioniCurate(List<Collezione> collezioniCurate) {
 		this.collezioniCurate = collezioniCurate;
 	}
-	
-	
+
+
 }

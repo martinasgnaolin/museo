@@ -31,20 +31,19 @@ public class PrenotazioneController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	////////////////////////////////////////////////////////////////////////////// pensiamoci
 	@RequestMapping(value = "/prenotazioni", method = RequestMethod.GET)
 	public String getPrenotazioni(Model model) {
 		model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
 		return "prenotazione.html";
 	}
-	
+
 
 	@RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
 	public String getPrenotazione(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("prenotazione", this.prenotazioneService.prenotazionePerId(id));
 		return "prenotazione.html";
 	}
-	
+
 	@RequestMapping(value="/addPrenotazione", method = RequestMethod.POST)
 	public String addPrenotazione(Model model, @ModelAttribute("collezioneId") Long collezioneId) {
 		logger.debug("addPrenotazione");
@@ -77,7 +76,7 @@ public class PrenotazioneController {
 		model.addAttribute("prenotazioni", this.prenotazioneService.tutti());
 		return "prenotazioneDelete.html";
 	}
-	
+
 	@RequestMapping(value = "/deletePrenotazione", method = RequestMethod.POST)
 	public String delete(@RequestParam("prenotazioneId") Long prenotazioneId, 
 			Model model) {
